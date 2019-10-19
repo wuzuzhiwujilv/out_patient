@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>特殊检查</title>
+    <!-- Bootstrap core CSS -->
+    <link href="${ctx!}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx!}/css/bootstrap/form-validation.css" rel="stylesheet">
+    <script type="text/javascript" src="${ctx!}/js/myJS/util/common.js"></script>
+    <script type="text/javascript" src="${ctx!}/js/myJS/util/utils.js"></script>
+
+    <style type="text/css">
+      .img-container{
+          background-color:#e7e7e7;
+          position: relative;
+          margin-left: 15px;
+          margin-right: 15px;
+      }
+      .img-container div{
+          text-align: center;
+          padding:0.5rem 0
+      }
+      .img-container input{
+          opacity:0;
+          filter:alpha(opacity=0);
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 9;
+      }
+      .table th{
+        vertical-align: middle;
+        text-align: center;
+      }
+    </style>
+
+  </head>
+
+  <body class="bg-light">
+    <div class="container">
+      <div class="py-5 text-center">
+        <h2>特殊检查</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form class="needs-validation" id="specialTest" novalidate>
+
+            <h4 class="mb-3">光学生物测量</h4>
+            <hr class="mb-4">
+             <div class="row">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>OD</th>
+                    <th>OS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">AL值</th>
+                    <td>
+                      <input type="text" class="form-control" id="ALODValue" placeholder="" value="">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="ALOSValue" placeholder="" value="" >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">CCT值</th>
+                    <td>
+                      <input type="text" class="form-control" id="CCTODValue" placeholder="" value="">                    
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="CCTOSValue" placeholder="" value="" >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">AD值</th>
+                    <td>
+                      <input type="text" class="form-control" id="ADODValue" placeholder="" value="">                    
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="ADOSValue" placeholder="" value="" >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">ACD值</th>
+                    <td>
+                      <input type="text" class="form-control" id="ACDODValue" placeholder="" value="">                    
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="ACDOSValue" placeholder="" value="" >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">LT值</th>
+                    <td>
+                      <input type="text" class="form-control" id="LTODValue" placeholder="" value="">                    
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="LTOSValue" placeholder="" value="" >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">K1值</th>
+                    <td>
+                      <input type="text" class="form-control" id="K1ODValue" placeholder="" value="">                    
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="K1OSValue" placeholder="" value="" >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">K2值</th>
+                    <td>
+                      <input type="text" class="form-control" id="K2ODValue" placeholder="" value="">                    
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="K2OSValue" placeholder="" value="" >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">AST值</th>
+                    <td>
+                      <input type="text" class="form-control" id="ASTODValue" placeholder="" value="">                    
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="ASTOSValue" placeholder="" value="" >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">PUPIL值</th>
+                    <td>
+                      <input type="text" class="form-control" id="PUPILODValue" placeholder="" value="">                    
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="PUPILOSValue" placeholder="" value="" >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">WTW值</th>
+                    <td>
+                      <input type="text" class="form-control" id="WTWODValue" placeholder="" value="">                    
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="WTWOSValue" placeholder="" value="" >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        
+            <hr class="mb-4">
+            <h4 class="mb-3">特殊检查</h4>
+            <hr class="mb-4">
+            <h6 class="mb-3">请添加附件</h6>
+            <div class="row" id="special-test-imgs">
+                <div class="img-container col-md-4 mb-3">
+                  <input type="file" id='img-specialTest' class="img-file" accept="image/*" />
+                  <div id='img-specialTest-default'>
+                    <img style='width:4rem' src="${ctx!}/images/camera.png" alt="">
+                  </div>
+                  <img style='width: 100%' id='img-specialTest-result'/>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h4 class="mb-3">验光</h4>
+            <hr class="mb-4">
+            <h5 class="mb-3">表屈光</h5>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="refractionOD">OD</label>
+                  <input type="text" class="form-control" id="refractionOD"  value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="refractionDS">DS</label>
+                  <input type="text" class="form-control" id="refractionDS"  value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="refractionDCX">DC X</label>
+                    <input type="text" class="form-control" id="refractionDCX"  value="" required>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="refractionOS">OS</label>
+                  <input type="text" class="form-control" id="refractionOS"  value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="refraction_OS_DS">DS</label>
+                  <input type="text" class="form-control" id="refraction_OS_DS"  value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="refraction_OS_DCX">DC X</label>
+                    <input type="text" class="form-control" id="refraction_OS_DCX"  value="" required>
+                  </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">散瞳验光 散瞳剂</h6>
+            <div class="custom-control custom-checkbox custom-control-inline col-md-4">
+                <input type="checkbox" class="custom-control-input" name="mydriatic" id="atropine" value="atropine">
+                <label class="custom-control-label" for="atropine">阿托品</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline col-md-4">
+                <input type="checkbox" class="custom-control-input" name="mydriatic" id="cyclogyl" value="cyclogyl">
+                <label class="custom-control-label" for="cyclogyl">赛飞杰</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline col-md-3">
+                <input type="checkbox" class="custom-control-input" name="mydriatic" id="mydrin" value="mydrin">
+                <label class="custom-control-label" for="mydrin">美多丽</label>
+            </div>
+            <div class="mb-3"></div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="mydriasisOD">OD</label>
+                  <input type="text" class="form-control" id="mydriasisOD"  value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="mydriasisDS">DS</label>
+                  <input type="text" class="form-control" id="mydriasisDS"  value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="mydriasisDCX">DC X</label>
+                    <input type="text" class="form-control" id="mydriasisDCX"  value="" required>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="mydriasisOS">OS</label>
+                  <input type="text" class="form-control" id="mydriasisOS"  value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="mydriasis_OS_DS">DS</label>
+                  <input type="text" class="form-control" id="mydriasis_OS_DS"  value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="mydriasis_OS_DCX">DC X</label>
+                    <input type="text" class="form-control" id="mydriasis_OS_DCX"  value="" required>
+                  </div>
+            </div>
+
+            <hr class="mb-4">
+            <h4 class="mb-3">视功能检查</h4>
+            <hr class="mb-4">
+            <div class="row">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>OD</th>
+                    <th>OS</th>
+                    <th>OU</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">AF值</th>
+                    <td>
+                      <input type="text" class="form-control" id="AFOD"  value="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="AFOS"  value="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="AFOU"  value="" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">AMP值</th>
+                    <td>
+                      <input type="text" class="form-control" id="AMPOD"  value="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="AMPOS"  value="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="AMPOU"  value="" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">BCC值</th>
+                    <td>
+                      <input type="text" class="form-control" id="BCCOD"  value="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="BCCOS"  value="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="BCCOU"  value="" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">NRA值</th>
+                    <td>
+                      <input type="text" class="form-control" id="NRAOD"  value="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="NRAOS"  value="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="NRAOU"  value="" required>
+                    </td>
+                  </tr>
+                   <tr>
+                    <th scope="row">PRA值</th>
+                    <td>
+                      <input type="text" class="form-control" id="PRAOD"  value="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="PRAOS"  value="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="PRAOU"  value="" required>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="NPCValue">NPC</label>
+                  <input type="text" class="form-control" id="NPCValue" placeholder="" value="">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="AC_AValue">AC/A</label>
+                    <input type="text" class="form-control" id="AC＿AValue" placeholder="" value="" >
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="button" id="submit">提交</button> 
+
+      </form>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2019- 天津医科大学眼科医院-xx科室</p>
+      </footer>
+
+      <!-- 使用modal 提示提交成功信息 -->
+      <div class="modal fade" id="successMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">系统提示：</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                提交成功！
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- 使用modal 提示提交失败信息 -->
+      <div class="modal fade" id="errorMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">系统提示：</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              提交失败！
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="${ctx!}/js/jquery.min.js"></script>
+    <script src="${ctx!}/js/bootstrap/popper.min.js"></script>
+    <script src="${ctx!}/js/bootstrap/bootstrap.min.js"></script>
+    <script src="${ctx!}/js/bootstrap/holder.min.js"></script>
+    
+    <script type="text/javascript" src="${ctx!}/pages/special-test/specialTest.js"></script>
+    
+  </body>
+</html>

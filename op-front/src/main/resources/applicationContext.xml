@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- <property name="ignoreUnresolvablePlaceholders" value="true" /> -->
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+				<!-- <value>classpath:redis.properties</value> -->
+			</list>
+		</property>
+	</bean>
+	<import resource="applicationContext-DataBase.xml" />
+	<import resource="applicationContext-tx.xml" />
+	<!-- <import resource="applicationContext-redis.xml"/> -->
+	<import resource="applicationContext-ehcache.xml" />
+<!-- 	<import resource="applicationContext-quartz.xml" /> -->
+	<!-- 不扫描controller -->
+	<context:component-scan base-package="com.eye.op">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<!--特殊字符集 -->
+	<bean id="specialCharacterFilter" class="com.eye.op.common.handler.SpecialCharacterFilter">
+		<property name="specialCharacters">
+			<list>
+				<!-- <value>and</value> -->
+				<value>exec</value>
+				<value>count</value>
+				<value>chr</value>
+				<value>mid</value>
+				<value>master</value>
+				<!-- <value>or</value> -->
+				<value>truncate</value>
+				<value>char</value>
+				<value>declare</value>
+				<value>join</value>
+				<value>&lt;</value>
+				<value>&lt;&gt;</value>
+				<value>&gt;</value>
+				<value>&amp;</value>
+				<!-- <value>/*</value> <value>*/</value> -->
+				<!-- <value>'</value> -->
+				<!-- <value>"</value> -->
+				<!-- <value>|</value> -->
+				<!-- <value>,</value> -->
+				<!-- <value>;</value> -->
+				<!-- <value>?</value> -->
+				<value>\\u</value>
+				<value>insert</value>
+				<value>select</value>
+				<value>delete</value>
+				<value>update</value>
+				<value>create</value>
+				<value>drop</value>
+				<!-- <value>$</value> -->
+				<!-- <value>%</value> -->
+				<!-- <value>\</value> -->
+				<!-- <value>+</value> -->
+				<!-- <value>@</value> -->
+				<value>()</value>
+				<value>0x0d</value>
+				<value>0x0a</value>
+				<value>0X0D</value>
+				<value>0X0A</value>
+				<value>0X0d</value>
+				<value>0X0a</value>
+				<value>0x0D</value>
+				<value>0x0A</value>
+			</list>
+		</property>
+	</bean>
+</beans>

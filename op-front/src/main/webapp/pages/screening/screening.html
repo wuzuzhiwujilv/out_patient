@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>筛查</title>
+    <!-- Bootstrap core CSS -->
+    <link href="${ctx!}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx!}/css/bootstrap/form-validation.css" rel="stylesheet">
+    <script type="text/javascript" src="${ctx!}/js/myJS/util/common.js"></script>
+	<script type="text/javascript" src="${ctx!}/js/myJS/util/utils.js"></script>
+  </head>
+
+  <body class="bg-light">
+    <div class="container">
+      <div class="py-5 text-center">
+        <h2>筛查</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form class="needs-validation" id="screening" novalidate>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">映光:正内外可选</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="lightReflection" >
+                    <option value="">请选择...</option>
+                    <option>5</option>
+                    <option>10</option>
+                    <option>15</option>
+                    <option>20</option>
+                    <option>25</option>
+                    <option>30</option>
+                    <option>45</option>
+                    <option>大于45</option>
+                  </select>
+                </div>
+            </div>  
+
+            <hr class="mb-4">
+            <h6 class="mb-3">屈光检查:spot筛查结果</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="dioptroscopy" >
+                    <option value="">请选择...</option>
+                    <option>阴性</option>
+                    <option>阳性</option>
+                  </select>
+                </div>
+            </div>  
+            <hr class="mb-4">
+            <h6 class="mb-3">裸眼视力值</h6>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="fatherEdu">OD</label>
+                  <select class="custom-select d-block w-100" id="NVOD" >
+                    <option value="">请选择...</option>
+                    <option>小于0.1</option>
+                    <option>0.2</option>
+                    <option>0.4</option>
+                    <option>0.5</option>
+                    <option>0.6</option>
+                    <option>0.7</option>
+                    <option>0.8</option>
+                    <option>0.9</option>
+                    <option>1.0</option>
+                    <option>1.2</option>
+                    <option>大于1.2</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="motherEdu">OS</label>
+                    <select class="custom-select d-block w-100" id="NVOS" >
+                      <option value="">请选择...</option>
+                      <option>小于0.1</option>
+                      <option>0.2</option>
+                      <option>0.4</option>
+                      <option>0.5</option>
+                      <option>0.6</option>
+                      <option>0.7</option>
+                      <option>0.8</option>
+                      <option>0.9</option>
+                      <option>1.0</option>
+                      <option>1.2</option>
+                      <option>大于1.2</option>
+                    </select>
+                </div>
+            </div>
+            
+            <hr class="mb-4">
+            <h6 class="mb-3">矫正视力值</h6>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="fatherEdu">OD</label>
+                  <select class="custom-select d-block w-100" id="CVOD" >
+                    <option value="">请选择...</option>
+                    <option>小于0.1</option>
+                    <option>0.2</option>
+                    <option>0.4</option>
+                    <option>0.5</option>
+                    <option>0.6</option>
+                    <option>0.7</option>
+                    <option>0.8</option>
+                    <option>0.9</option>
+                    <option>1.0</option>
+                    <option>1.2</option>
+                    <option>大于1.2</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="motherEdu">OS</label>
+                    <select class="custom-select d-block w-100" id="CVOS" >
+                      <option value="">请选择...</option>
+                      <option>小于0.1</option>
+                      <option>0.2</option>
+                      <option>0.4</option>
+                      <option>0.5</option>
+                      <option>0.6</option>
+                      <option>0.7</option>
+                      <option>0.8</option>
+                      <option>0.9</option>
+                      <option>1.0</option>
+                      <option>1.2</option>
+                      <option>大于1.2</option>
+                    </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">调节灵活度检查</h6>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="fatherEdu">OD</label>
+                  <input type="text" class="form-control" id="ODValue" placeholder="" value="">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="motherEdu">OS</label>
+                    <input type="text" class="form-control" id="OSValue" placeholder="" value="" >
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="button" id="submit">提交</button> 
+
+      </form>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2019- 天津医科大学眼科医院-xx科室</p>
+      </footer>
+
+      <!-- 使用modal 提示提交成功信息 -->
+      <div class="modal fade" id="successMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">系统提示：</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                提交成功！
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- 使用modal 提示提交失败信息 -->
+      <div class="modal fade" id="errorMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">系统提示：</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              提交失败！
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="${ctx!}/js/jquery.min.js"></script>
+    <script src="${ctx!}/js/bootstrap/popper.min.js"></script>
+    <script src="${ctx!}/js/bootstrap/bootstrap.min.js"></script>
+    <script src="${ctx!}/js/bootstrap/holder.min.js"></script>
+    
+    <script type="text/javascript" src="${ctx!}/pages/screening/screening.js"></script>
+    
+  </body>
+</html>

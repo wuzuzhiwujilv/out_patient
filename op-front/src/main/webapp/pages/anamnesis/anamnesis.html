@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>病史确认</title>
+    <!-- Bootstrap core CSS -->
+    <link href="${ctx!}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx!}/css/bootstrap/form-validation.css" rel="stylesheet">
+    <link href="${ctx!}/css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+    <div class="container">
+      <div class="py-5 text-center">
+        <h2>病史确认</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form class="needs-validation" id="eye" novalidate>
+
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="username">姓名</label>
+                <input type="text" class="form-control" id="username" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  姓名不能为空
+                </div>
+              </div>
+              <div class="col-md-9 mb-3">
+                <label for="IDCard">身份证号</label>
+                <input type="text" class="form-control" id="IDCard" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  身份证号不能为空
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="stature">身高</label>
+                <input type="text" class="form-control" id="stature" placeholder="cm" value="" required>
+                <div class="invalid-feedback">
+                  身高不能为空
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="weight">体重</label>
+                <input type="text" class="form-control" id="weight" placeholder="kg" value="" required>
+                <div class="invalid-feedback">
+                  体重不能为空
+                </div>
+              </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">出生年月日</h6>
+            <div class="row">
+                <div class="form-group">
+                    <div class="input-group date form_date col-md-12" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_birthday" data-link-format="yyyy-mm-dd">
+                        <input class="form-control"  type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <input type="hidden" id="dtp_birthday" value="" /><br/>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">父母受教育水平</h6>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="fatherEdu">父亲</label>
+                  <select class="custom-select d-block w-100" id="fatherEdu" >
+                    <option value="">请选择...</option>
+                    <option>初中及以下</option>
+                    <option>高中</option>
+                    <option>大学</option>
+                    <option>研究生及以上</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="motherEdu">母亲</label>
+                    <select class="custom-select d-block w-100" id="motherEdu" >
+                        <option value="">请选择...</option>
+                        <option>初中及以下</option>
+                        <option>高中</option>
+                        <option>大学</option>
+                        <option>研究生及以上</option>
+                    </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">父母视力（单只眼大于等于600度即为高度近视）</h6>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="fatherVision">父亲</label>
+                  <select class="custom-select d-block w-100" id="fatherVision" >
+                    <option value="">请选择...</option>
+                    <option>正常</option>
+                    <option>近视</option>
+                    <option>高度近视</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="motherVision">母亲</label>
+                    <select class="custom-select d-block w-100" id="motherVision" >
+                        <option value="">请选择...</option>
+                        <option>正常</option>
+                        <option>近视</option>
+                        <option>高度近视</option>
+                    </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">家庭月收入</h6>
+            <div class="my-3">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input id="incomeLvOne" name="familyIncome" type="radio" class="custom-control-input" value="小于4000" required>
+                  <label class="custom-control-label" for="incomeLvOne">小于4000 RMB</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input id="incomeLvTwo" name="familyIncome" type="radio" class="custom-control-input" value="4000-8000" required>
+                  <label class="custom-control-label" for="incomeLvTwo">4000 - 8000 RMB</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input id="incomeLvThree" name="familyIncome" type="radio" class="custom-control-input" value="8000-10000" required>
+                  <label class="custom-control-label" for="incomeLvThree">8000 - 10000 RMB</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input id="incomeLvFour" name="familyIncome" type="radio" class="custom-control-input" value="10000-15000" required>
+                  <label class="custom-control-label" for="incomeLvFour">10000 - 15000 RMB</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input id="incomeLvFive" name="familyIncome" type="radio" class="custom-control-input" value="大于15000" required>
+                  <label class="custom-control-label" for="incomeLvFive">大于15000 RMB</label>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">母亲生育年龄</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <input type="text" class="form-control" id="childBearingAge" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    生育年龄不能为空
+                  </div>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">分娩方式</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="deliveryMethod" >
+                    <option value="">请选择...</option>
+                    <option>顺产</option>
+                    <option>剖腹产</option>
+                    <option>其他</option>
+                  </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孕周</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="gestationalWeeks" >
+                    <option value="">请选择...</option>
+                    <option>大于42周</option>
+                    <option>37-41周</option>
+                    <option>小于36周</option>
+                  </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孕期母亲是否吸烟</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="selfSmoking" >
+                    <option value="">请选择...</option>
+                    <option>是</option>
+                    <option>否</option>
+                  </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孕期母亲是否吸入二手烟</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="beSmoked" >
+                    <option value="">请选择...</option>
+                    <option>是</option>
+                    <option>否</option>
+                  </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">母亲母乳时间</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="milkTime" >
+                    <option value="">请选择...</option>
+                    <option>大于6个月</option>
+                    <option>小于6个月</option>
+                  </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">母亲孕期疾病史</h6>
+            <div class="custom-control custom-checkbox custom-control-inline col-md-4">
+                <input type="checkbox" class="custom-control-input" name="pregnancyDiseases" id="hypertension" value="hypertension">
+                <label class="custom-control-label" for="hypertension">高血压</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline col-md-4">
+                <input type="checkbox" class="custom-control-input" name="pregnancyDiseases" id="diabetes" value="diabetes">
+                <label class="custom-control-label" for="diabetes">高血糖</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline col-md-3">
+                <input type="checkbox" class="custom-control-input" name="pregnancyDiseases" id="illOthers" value="illOthers">
+                <label class="custom-control-label" for="illOthers">其他</label>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孩子每天户外活动时间</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <input type="text" class="form-control" id="outdoorTime" placeholder="小时" value="">                  
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孩子每天户读书及写作业时间</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <input type="text" class="form-control" id="readingTime" placeholder="小时" value="">                  
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孩子每天用手机、iPad等电子产品完成家庭作业时间</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <input type="text" class="form-control" id="playingTime" placeholder="小时" value="">                  
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">观看电视时，电视与孩子之间的距离</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="TVDistance" >
+                    <option value="">请选择...</option>
+                    <option>1米以内</option>
+                    <option>1-2米</option>
+                    <option>2-3米</option>
+                    <option>3-4米</option>
+                    <option>4-5米</option>
+                  </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孩子在写作业或读书时的照明情况</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="lightingStatus" >
+                    <option value="">请选择...</option>
+                    <option>台灯（白色灯光)</option>
+                    <option>台灯（黄色灯光)</option>
+                    <option>吊灯（白色灯光)</option>
+                    <option>吊灯（黄色灯光)</option>
+                    <option>自然光线（阳光)<option>
+                  </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孩子喝牛奶情况</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="drinkjMilkStatus" >
+                    <option value="">请选择...</option>
+                    <option>每天</option>
+                    <option>经常</option>
+                    <option>偶尔</option>
+                    <option>从不</option>
+                  </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孩子每天睡觉时间</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="goBedTime" >
+                    <option value="">请选择...</option>
+                    <option>8点以前</option>
+                    <option>8-9点</option>
+                    <option>9-10点</option>
+                    <option>10-11点</option>
+                    <option>11点以后</option>
+                  </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孩子每天起床时间</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="wakeupTime" >
+                    <option value="">请选择...</option>
+                    <option>6点以前</option>
+                    <option>6-7点</option>
+                    <option>7-8点</option>
+                    <option>8点以后</option>
+                  </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孩子每天午睡时间</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <select class="custom-select d-block w-100" id="napTime" >
+                    <option value="">请选择...</option>
+                    <option>不午睡</option>
+                    <option>0-0.5小时</option>
+                    <option>0.5-1小时</option>
+                    <option>1-1.5小时</option>
+                    <option>1-1.5小时</option>
+                  </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">孩子每天睡眠总时长</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <input type="text" class="form-control" id="totalSleepTime" placeholder="小时" value="">                  
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="playPCTime">每天玩电脑的时间</label>
+                  <input type="text" class="form-control" id="playPCTime" placeholder="小时" value="" >
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="playPhoneTime">每天玩手机或iPad的时间</label>
+                  <input type="text" class="form-control" id="playPhoneTime" placeholder="小时" value="" >
+                </div>
+              </div>
+
+            <hr class="mb-4">
+            <h6 class="mb-3">是否参加相对固定的体育活动</h6>
+            <div class="my-3">
+                <div class="custom-control custom-radio custom-control-inline col-md-6">
+                  <input id="joinSport" name="whetherSport" type="radio" class="custom-control-input" value="yes"  required>
+                  <label class="custom-control-label" for="joinSport">是</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input id="noSport" name="whetherSport" type="radio" class="custom-control-input" value="no" required>
+                  <label class="custom-control-label" for="noSport">否</label>
+                </div>
+            </div>
+            <h6 class="mb-3">如果是，参加什么项目</h6>
+            <div class="custom-control custom-checkbox custom-control-inline ">
+                <input type="checkbox" class="custom-control-input" name="joinSports" value=”football“ id="football">
+                <label class="custom-control-label" for="football">足球</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline ">
+                <input type="checkbox" class="custom-control-input " name="joinSports" value="basketball" id="basketball">
+                <label class="custom-control-label" for="basketball">篮球</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline ">
+                <input type="checkbox" class="custom-control-input " name="joinSports" value="pingpang" id="pingpang">
+                <label class="custom-control-label" for="pingpang">乒乓球</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline ">
+                <input type="checkbox" class="custom-control-input " name="joinSports" value="athletics" id="athletics">
+                <label class="custom-control-label" for="athletics">田径</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline ">
+                <input type="checkbox" class="custom-control-input "  name="joinSports" value="swim" id="swim">
+                <label class="custom-control-label" for="swim">游泳</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline ">
+                <input type="checkbox" class="custom-control-input " name="joinSports" value=”tennis“ id="tennis">
+                <label class="custom-control-label" for="tennis">网球</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline ">
+                <input type="checkbox" class="custom-control-input " name="joinSports" value="badminton" id="badminton">
+                <label class="custom-control-label" for="badminton">羽毛球</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline ">
+                <input type="checkbox" class="custom-control-input " name="joinSports" value="volleyball" id="volleyball">
+                <label class="custom-control-label" for="volleyball">排球</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline ">
+                <input type="checkbox" class="custom-control-input " name="joinSports" value="dance" id="dance">
+                <label class="custom-control-label" for="dance">舞蹈</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline ">
+                <input type="checkbox" class="custom-control-input " name="joinSports" value=”otherSport“ id="otherSport">
+                <label class="custom-control-label" for="otherSport">其他</label>
+            </div>
+            <hr class="mb-4">
+            <h6 class="mb-3">每天多长时间</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                  <input type="text" class="form-control" id="sportTime" placeholder="小时" value="">                  
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="button" id="submit">提交</button> 
+
+      </form>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2019- 天津医科大学眼科医院-xx科室</p>
+      </footer>
+
+      <!-- 使用modal 提示提交成功信息 -->
+      <div class="modal fade" id="successMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">系统提示：</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                提交成功！
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- 使用modal 提示提交失败信息 -->
+      <div class="modal fade" id="errorMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">系统提示：</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              提交失败！
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="${ctx!}/js/jquery.min.js"></script>
+    <script src="${ctx!}/js/bootstrap/popper.min.js"></script>
+    <script src="${ctx!}/js/bootstrap/bootstrap.min.js"></script>
+    <script src="${ctx!}/js/bootstrap/holder.min.js"></script>
+
+    <!-- datetimepicker JavaScript -->
+    <script type="text/javascript" src="${ctx!}/js/bootstrap/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="${ctx!}/js/bootstrap/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    
+    <script type="text/javascript" src="${ctx!}/pages/anamnesis/anamnesis.js"></script>
+    
+  </body>
+</html>

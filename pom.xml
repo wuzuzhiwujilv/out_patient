@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.eye.op</groupId>
+	<artifactId>eye-op-parent</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>org.apache.maven.plugins</artifactId>
+					<groupId>maven-compiler-plugin</groupId>
+					<version>2.3.2</version>
+					<configuration>
+						<soruce>1.8</soruce>
+						<target>1.8</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>org.apache.maven.plugins</artifactId>
+					<groupId>maven-resources-plugin</groupId>
+					<version>2.6</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>org.apache.maven.plugins</artifactId>
+					<groupId>maven-war-plugin</groupId>
+					<version>2.4</version>
+					<configuration>
+						<warName>eyeExam</warName>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<modules>
+    <module>op-base</module>
+    <module>op-dao</module>
+    <module>op-service</module>
+    <module>op-front</module>
+	</modules>
+
+	<!-- 使用阿里 maven 镜像 -->
+	<repositories>
+		<repository>
+			<id>ali-maven</id>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.jdk>1.8</project.build.jdk>
+		<spring.version>4.3.11.RELEASE</spring.version>
+		<spring.data.jpa.version>1.10.6.RELEASE</spring.data.jpa.version>
+		<junit.version>4.11</junit.version>
+		<commonslang3.verison>3.6</commonslang3.verison>
+		<common.io.version>2.4</common.io.version>
+		<common.file.version>1.3</common.file.version>
+		<servlet.api.version>3.1.0</servlet.api.version>
+		<hibernate.jpa.version>1.0.0.Final</hibernate.jpa.version>
+		<hibernate.core.version>4.3.5.Final</hibernate.core.version>
+		<hibernate.ehcache.version>4.3.5.final</hibernate.ehcache.version>
+		<hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
+		<mysql.version>5.1.6</mysql.version>
+		<log.version>1.2.15</log.version>
+		<commons.lang.verson>3.3.2</commons.lang.verson>
+		<poi.version>3.12</poi.version>
+		<poi.ooxml.version>3.12</poi.ooxml.version>
+		<dom4j.version>1.6</dom4j.version>
+		<hibernate-c3p0>4.3.5.Final</hibernate-c3p0>
+		<aspectj.version>1.5.4</aspectj.version>
+		<freemarker.version>2.3.28</freemarker.version>
+		<jackson.version>2.7.4</jackson.version>
+		<spring.data.redis.version>1.7.2.RELEASE</spring.data.redis.version>
+		<redis.client.version>2.8.1</redis.client.version>
+		<junit.version>4.12</junit.version>
+		<slf4j.version>1.7.2</slf4j.version>
+		<joda.time.version>2.3</joda.time.version>
+		<ehcache.version>2.6.11</ehcache.version>
+		<pinyin.version>2.5.0</pinyin.version>
+		<javacsv.version>2.0</javacsv.version>
+		<cxf.version>3.1.8</cxf.version>
+		<jsr311.version>1.1.1</jsr311.version>
+		<quartz.version>2.2.2</quartz.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- database begin -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
+		<!-- common begin -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commonslang3.verison}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${common.io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${common.file.version}</version>
+		</dependency>
+		<!-- common end -->
+
+		<!-- spring start -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<!-- spring end -->
+
+		<!-- hibernate start -->
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>${hibernate.jpa.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>${hibernate-c3p0}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${hibernate.ehcache.version}</version>
+		</dependency>
+		<!-- hibernate end -->
+
+		<!-- redis start -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>${spring.data.redis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${redis.client.version}</version>
+		</dependency>
+		<!-- redis end -->
+
+		<!-- ehcache start -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>${ehcache.version}</version>
+		</dependency>
+		<!-- ehcache end -->
+
+		<!-- logs start -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log.version}</version>
+			 <exclusions>
+                <exclusion>
+                    <groupId>javax.mail</groupId>
+                    <artifactId>mail</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.jms</groupId>
+                    <artifactId>jms</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.jdmk</groupId>
+                    <artifactId>jmxtools</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.jmx</groupId>
+                    <artifactId>jmxri</artifactId>
+                </exclusion>
+            </exclusions>
+		</dependency>
+		<!-- logs end -->
+
+		<!-- excel poi start -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.ooxml.version}</version>
+		</dependency>
+		<!-- excel poi end -->
+
+		<!-- jason start -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<!-- jason end -->
+
+		<!-- springMVC时间参数解析 -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda.time.version}</version>
+		</dependency>
+		<!-- springMVC时间参数解析 -->
+
+
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>${dom4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${freemarker.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.belerweb</groupId>
+			<artifactId>pinyin4j</artifactId>
+			<version>${pinyin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.javacsv</groupId>
+			<artifactId>javacsv</artifactId>
+			<version>${javacsv.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>jsr311-api</artifactId>
+			<version>${jsr311.version}</version>
+		</dependency>
+		
+		  <dependency>  
+            <groupId>org.quartz-scheduler</groupId>  
+            <artifactId>quartz</artifactId>  
+            <version>${quartz.version}</version>  
+        </dependency>  
+	</dependencies>
+</project>

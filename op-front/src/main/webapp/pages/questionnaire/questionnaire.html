@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>问卷</title>
+<link rel="stylesheet" type="text/css"
+	href="${ctx!}/js/jquery-easyui-1.4/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css"
+	href="${ctx!}/js/jquery-easyui-1.4/themes/icon.css" />
+<link rel="stylesheet" type="text/css" href="${ctx!}/css/default.css" />
+<script type="text/javascript"
+	src="${ctx!}/js/jquery-easyui-1.4/jquery-1.7.2.min.js"></script>
+<script type="text/javascript"
+	src="${ctx!}/js/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+<script type="text/javascript"
+	src="${ctx!}/js/jquery-easyui-1.4/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="${ctx!}/js/myJS/util/common.js"></script>
+<script type="text/javascript" src="${ctx!}/js/myJS/util/utils.js"></script>
+<script type="text/javascript" src="${ctx!}/pages/questionnaire/questionnaire.js"></script>
+
+</head>
+<body>
+	<table id="list">
+	</table>
+
+	
+	<div id="toolbar">
+		<div>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="openAddDlg();">添加</a> 
+			<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="edit();">修改</a> 
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="del();">删除</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-download" plain="true" onclick="exportSpot();">导出sopt文件</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-download" plain="true" onclick="exportProject();">导出筛查列表</a>
+		</div>
+	</div>
+	<!--问卷填写表单  -->
+	<div id="add_dlg" class="easyui-dialog"
+		style="width: 300px; height: 450px; padding: 10px 20px" closed="true"
+		modal="true" iconCls="icon-add">
+		 <form id="add_fm" method="post" novalidate>
+			<input type="hidden" name="id" />
+			<div class="fitem">
+				<label>姓名:</label> <br/> <input name="name"
+					class="easyui-validatebox"  style="width: 200px;"
+					 />
+			</div><br/>
+			<div class="fitem">
+				<label>身份证号:</label> <br/> <input name="idCard"
+					class="easyui-validatebox"  style="width: 200px;"
+					 />
+			</div><br/>
+			<div class="fitem">
+				<label>身高(cm):</label> <br/> <input name="height"
+					class="easyui-validatebox"  style="width: 200px;"
+					 />
+			</div><br/>
+			 <div class="fitem">
+				<label>体重(kg):</label> <br/> <input name="weight"
+					class="easyui-validatebox"    style="width: 200px;"
+					 />
+			</div><br/>
+			<div class="fitem">
+				<label>父亲教育水平:</label> <br/> <select name="levelOfFather" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="初中及以下">初中及以下</option>
+					<option value="高中">高中</option>
+					<option value="大学">大学</option>
+					<option value="研究生以上">研究生及以上</option>
+					</select>
+			</div><br/>
+			<div class="fitem">
+				<label>母亲教育水平:</label> <br/> <select name="levleOfMother" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="初中及以下">初中及以下</option>
+					<option value="高中">高中</option>
+					<option value="大学">大学</option>
+					<option value="研究生以上">研究生及以上</option>
+					</select>
+			</div><br/>
+			<div class="fitem">
+				<label>父亲是否近视:</label> <br/> <select name="ifFatherMyopia" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="是">是</option>
+					<option value="否">否</option>
+					</select>
+			</div><br/>
+			<div class="fitem">
+				<label>母亲是否近视:</label> <br/> <select name="ifMotherMyopia" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="是">是</option>
+					<option value="否">否</option>
+					</select>
+			</div><br/>
+			<div class="fitem">
+				<label>父亲是否高度近视:</label> <br/> <select name="ifFatherHighMyopia" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="是">是</option>
+					<option value="否">否</option>
+					</select>
+			</div><br/>
+			<div class="fitem">
+				<label>母亲是否高度近视:</label> <br/> <select name="ifMotherHighMyopia" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="是">是</option>
+					<option value="否">否</option>
+					</select>
+			</div><br/>
+			<div class="fitem">
+				<label>家庭收入:</label> <br/> <select name="incomeLevel" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="小于4000RMB"><4000RMB</option>
+					<option value="4000--8000RMB">4000--8000RMB</option>
+					<option value="8000-10.000RMB">8000-10.000RMB</option>
+					<option value="10,000-15,000RMB">10,000-15,000RMB</option>
+					<option value="大于15,000RMB">>15,000RMB</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>母亲生育年龄:</label> <br/> <input name="ChildbearingAge"
+					class="easyui-validatebox"    style="width: 200px;"
+					/>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>分娩方式:</label> <br/> <select name="deliveryMod" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="顺产">顺产</option>
+					<option value="刨妇产">刨妇产</option>
+					<option value="其他">其他</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>孕周:</label> <br/> <select name="dateOfPregnancy" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="大于42周">>42周</option>
+					<option value="37-41周">37-41周</option>
+					<option value="36周"><36周</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>孕期母亲是否吸烟:</label> <br/> <select name="ifmoke" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="是">是</option>
+					<option value="否">否</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>孕期母亲是否吸二手烟:</label> <br/> <select name="ifecondSomke" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="是">是</option>
+					<option value="否">否</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>母亲母乳时间:</label> <br/> <select name="milkTime" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="大于6个月">>6个月</option>
+					<option value="小于6个月"><6个月</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>母亲孕期疾病史:</label> <br/> <select name="medicalHistory" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="高血压">高血压</option>
+					<option value="高血糖">高血糖</option>
+					<option value="其他">其他</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>孩子户外运动时间(小时):</label> <br/> <input name="dateOfOutsite"
+					class="easyui-validatebox"    style="width: 200px;"
+					 />
+			</div>
+					
+			<div class="fitem"><br/>
+				<label>孩子读书写作业时间(小时):</label> <br/> <input name="dateOfReader"
+					class="easyui-validatebox"    style="width: 200px;"
+					/>
+			</div>
+			
+			<div class="fitem"><br/>
+				<label>电子产品完成家庭作业时间(小时):</label> <br/> <input name="dateOfHomework"
+					class="easyui-validatebox"    style="width: 200px;"
+					/>
+			</div>
+			
+			<div class="fitem"><br/>
+				<label>孩子与电视之间的距离:</label> <br/> <select name="TVDistance" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="1米以内">1米以内</option>
+					<option value="1-2米">1-2米 </option>
+					<option value="3-4米">3-4米</option>
+					<option value="4-5米">4-5米</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>照明情况:</label> <br/> <select name="illumination" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="台灯(白色灯光)">台灯(白色灯光)</option>
+					<option value="台灯(黄色灯光)">台灯(黄色灯光)</option>
+					<option value="吊灯(白色灯光)">吊灯(白色灯光)</option>
+					<option value="吊灯(黄色灯光)">吊灯(黄色灯光)</option>
+					<option value="自然光线(阳光)">自然光线(阳光)</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>孩子喝牛奶情况:</label> <br/> <select name="drinkMilK" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="每天">每天</option>
+					<option value="经常">经常</option>
+					<option value="偶尔">偶尔</option>
+					<option value="从不">从不</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>孩子每天睡觉时间:</label> <br/> <select name="sleepTime" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="8点以前">8点以前</option>
+					<option value="8-9点">8-9点</option>
+					<option value="9-10点">9-10点</option>
+					<option value="10-11点">10-11点</option>
+					<option value="11点以后">11点以后</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>孩子每天起床时间:</label> <br/> <select name="getUpTime" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="6点以前">6点以前</option>
+					<option value="6-7点">6-7点</option>
+					<option value="7-8点">7-8点</option>
+					<option value="8点以后">8点以后</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>孩子每天午睡时长(小时):</label> <br/> <select name="durationOfNap" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="不午睡">不午睡</option>
+					<option value="0-0.5h">0-0.5h</option>
+					<option value="0.5-1h">0.5-1h</option>
+					<option value="1-1.5h">1-1.5h</option>
+					<option value="大于1.5h">>1.5h</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>孩子每天睡眠总时长(小时):</label> <br/> <input name="durationSleep"
+					class="easyui-validatebox"    style="width: 200px;"
+					 />
+			</div><br/>
+					
+			<div class="fitem">
+				<label>每天玩电脑时长(小时):</label> <br/> <input name="pcTime"
+					class="easyui-validatebox"    style="width: 200px;"
+					 />
+			</div><br/>
+					
+			<div class="fitem">
+				<label>每天玩手机或iPad时长(小时):</label> <br/> <input name="mobileTime"
+					class="easyui-validatebox"    style="width: 200px;"
+					 />
+			</div><br/>
+			
+			<div class="fitem">
+				<label>是否参加体育活动:</label> <br/> <select name="ifSport" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="是">是</option>
+					<option value="否">否</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>体育项目:</label> <br/> <select name="typeOfSport" id="status_select"
+					class="easyui-combobox"    style="width: 200px;" >
+					<option value="足球">足球</option>
+					<option value="篮球">篮球</option>
+					<option value="乒乓球">乒乓球</option>
+					<option value="田径">田径</option>
+					<option value="游泳">游泳</option>
+					<option value="网球">网球</option>
+					<option value="排球">排球</option>
+					<option value="舞蹈">舞蹈</option>
+					<option value="其他">其他</option>
+					</select>
+			</div><br/>
+			
+			<div class="fitem">
+				<label>每天运动时长(小时):</label> <br/> <input name="timeOfSprot"
+					class="easyui-validatebox"    style="width: 200px;"
+					 />
+			</div><br/> 
+			
+			
+		</form>
+	</div>
+	<form id="exportSpot" method="post"  style="display:none;"></form>
+	<form id="exportProject" method="post"  style="display:none;"></form>
+</body>
+</html>

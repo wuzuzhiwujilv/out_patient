@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+<!-- 		    <property name="ignoreUnresolvablePlaceholders" value="true" /> -->
+		    <property name="locations">  
+		        <list>  
+		            <value>classpath:path.properties</value>
+		        </list>  
+		    </property>  
+		</bean>
+
+	<mvc:annotation-driven />
+
+	<!-- 只扫描controller -->
+	<context:component-scan base-package="com.eye.op"
+		use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- 处理resource下的静态资源 -->
+	<mvc:default-servlet-handler />
+	
+	<!-- 上传文件解析器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <property name="defaultEncoding" value="utf-8"></property>   
+        <property name="maxUploadSize" value="10485760000"></property>  
+        <property name="maxInMemorySize" value="40960"></property>  
+   </bean> 
+
+	<!-- 定义FreeMarker视图解析器与属性配置 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="cache" value="true" />
+		<!-- <property name="prefix" value="" /> -->
+		<property name="suffix" value=".html" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<!-- freemarker可以使用请求中的属性 -->
+		<property name="exposeRequestAttributes" value="true" />
+		<!-- freemarker可以使用会话中的属性 -->
+		<property name="exposeSessionAttributes" value="true" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+	</bean>
+
+	<bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/pages/" />
+		<property name="freemarkerSettings">
+			<props>
+				<!-- <prop key="template_update_delay">10000</prop> -->
+
+				<prop key="template_update_delay">0</prop>
+				<prop key="defaultEncoding">UTF-8</prop>
+				<prop key="url_escaping_charset">UTF-8</prop>
+				<prop key="locale">zh_CN</prop>
+				<prop key="boolean_format">true,false</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="time_format">HH:mm:ss</prop>
+				<prop key="number_format">0.######</prop>
+				<prop key="whitespace_stripping">true</prop>
+				<prop key="auto_import">spring.ftl as spring</prop>
+				<prop key="incompatible_improvements">2.3.8</prop>
+				
+			</props>
+		</property>
+			<!-- 全局变量部分 -->
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="ctx" value="${basePath}" />
+			</map>
+		</property>
+	</bean>
+	
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/**/images/**"/>
+			 <mvc:exclude-mapping path="/**/css/**"/>
+			  <mvc:exclude-mapping path="/**/js/**"/>
+			  <mvc:exclude-mapping path="/**/*.js"/>
+			   <mvc:exclude-mapping path="/**/*.xls"/>
+			   <mvc:exclude-mapping path="/**/*.xlsx"/>
+			   <mvc:exclude-mapping path="/dologin"/>
+			   <mvc:exclude-mapping path="/anamnesis"/>
+			   <mvc:exclude-mapping path="/randomCode/*"/>
+			    <mvc:exclude-mapping path="/"/>
+			<bean class="com.eye.op.common.handler.SessionHandlerInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
+	<!--国际化 -->
+	 <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">   
+     
+     <!-- 其中basename用来指定properties文件的通用名
+              如实例中的messages_en.properties,messages_ja.properties通用名都是messages
+      -->
+<!--      <property name="basenames"> -->
+<!--     		<list> -->
+<!-- 				<value>classpath:messages/farebase</value> -->
+<!-- 			</list> -->
+<!-- 		</property>	 -->
+  <property name="basename" value="message" />  
+     <property name="defaultEncoding" value="UTF-8"/>
+     <property name="useCodeAsDefaultMessage" value="true" />
+   </bean>   
+   	<!-- 国际化操作 拦截器  -->           
+	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />  
+	
+	<!-- 基于Session的国际化配置 -->    
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
+	
+</beans>
