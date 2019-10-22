@@ -14,7 +14,7 @@ import org.hibernate.annotations.NotFoundAction;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name="user_privilege")
+@Table(name="op_user_privilege")
 public class UserPrivilege {
 	
 	private Integer id;

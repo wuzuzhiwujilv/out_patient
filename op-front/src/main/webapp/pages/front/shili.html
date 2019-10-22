@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="${ctx!}//css/bootstrap.min.css" rel="stylesheet" />
+<script type="text/javascript" src="${ctx!}/js/myJS/util/utils.js"></script>
+<script type="text/javascript"
+	src="${ctx!}/js/jquery-easyui-1.4/jquery-1.7.2.min.js"></script>
+<script src="${ctx!}/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${ctx!}/js/numkb.js"></script>
+<link href="${ctx!}/css/numkb.css" rel="stylesheet" />
+<script src="${ctx!}/pages/front/shili.js"></script>
+<script src="${ctx!}/pages/front/exam.js"></script>
+<link href="${ctx!}/css/exam.css" rel="stylesheet" />
+</head>
+<body>
+<input id="project" type="text" value="${project.id}" style="display: none" />
+	<header>
+		<div class="cent-left" id="item">视力工位</div>
+		<div class="cent-right">${project.school!}</div>
+	</header>
+		<div class="left-part" id="left-part">
+		<#list students as student>
+		<div class="content" id="content_${student.no}" onclick="selected(${student.no})">
+			<div class="no" id="no_${student.no}">${student.no!}</div>
+			<div class="grade_class" id="gc_${student.no}">${student.grade!}.${student.classes!}班</div>
+			<div class="name" id="name_${student.no}">${student.name!}</div>
+<!-- 			<div class="sex" id="sex_${student.no}">${student.sex!}</div> -->
+			<input id="id_${student.no}" type="text" value="${student.id}"
+				style="display: none" />
+		</div>
+		</#list>
+	</div>
+	<div class="right-part">
+		<div class="title-left" id="show_att_name"></div>
+		<div class="title-right">
+			<input id="current_no" class="input_class" type="text"
+				placeholder="编号" onblur="listenCurrentNo()"/>
+		</div>
+		<div id="msgContent" class="msg"></div>
+		<div id="shili">
+			<input type="text" id="current_item" value="" style="display: none"/> 
+			<div class="exam_area" style="height:280px;margin-top:10%">
+				<table class="gridtable">
+						<tr>
+							<th></th>
+							<th>OD</th>
+							<th>OS</th>
+						</tr>
+						<tr>
+							<th>未矫正</th>
+							<td id="nod" onclick="cgBG(this)"></td>
+							<td id="nos" onclick="cgBG(this)"></td>
+						</tr>
+						<tr>
+							<th>已矫正</th>
+							<td id="yod" onclick="cgBG(this)"></td>
+							<td id="yos" onclick="cgBG(this)"></td>
+						</tr>
+					</table>
+
+
+				<div class="suojin">
+						<div class="st_line" id="0.1">0.1</div>
+						<div class="st_line" id="0.2">0.2</div>
+						<div class="st_line" id="0.3">0.3</div>
+						<div class="st_line" id="0.4">0.4</div>
+						<div class="st_line" id="0.5">0.5</div>
+						<div class="st_line" id="0.6">0.6</div>
+						<div class="st_line" id="0.7">0.7</div>
+						<div class="st_line" id="0.8">0.8</div>
+						<div class="st_line" id="0.9">0.9</div>
+						<div class="st_line" id="1.0">1.0</div>
+						<div class="st_line" id="1.1">1.1</div>
+						<div class="st_line" id="1.2">1.2</div>
+						<div class="st_line" id=">1.2">>1.2</div>
+						<div class="st_line" id="kong">空</div>
+				</div>
+			</div>
+			<div class="commit" onclick="submit_shili()">检查结束</div>
+		</div>
+		
+	</div>
+</body>
+</html>

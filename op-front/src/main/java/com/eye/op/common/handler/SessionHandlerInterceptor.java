@@ -9,6 +9,9 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.eye.op.common.bean.User;
+import com.eye.op.common.utils.Constant;
+
 public class SessionHandlerInterceptor implements HandlerInterceptor{
 	private static Logger logger = Logger.getLogger(SessionHandlerInterceptor.class); 
 
@@ -23,15 +26,15 @@ public class SessionHandlerInterceptor implements HandlerInterceptor{
 		String path = request.getContextPath();
 		String basePath = scheme + "://" + serverName + ":" + port + path;
 		HttpSession session = request.getSession(false);
-//		if (session == null) {
-//			response.sendRedirect(basePath);
-//			return false;
-//		}
-//		Account user = (Account) session.getAttribute(Constant.SESSION_USER);
-//		if (user == null) {
-//			response.sendRedirect(basePath);
-//			return false;
-//		}
+		if (session == null) {
+			response.sendRedirect(basePath);
+			return false;
+		}
+		User user = (User) session.getAttribute(Constant.SESSION_USER);
+		if (user == null) {
+			response.sendRedirect(basePath);
+			return false;
+		}
 		return true;
 	}
 
