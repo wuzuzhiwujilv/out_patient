@@ -51,10 +51,29 @@ public class DateUtil {
 		Date d=sdf.parse(sdf.format(cal.getTime()));
 		return d;
 	}
+	
+	public static Date addDays(Date date, int days) throws ParseException{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, days);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date d=sdf.parse(sdf.format(cal.getTime()));
+		return d;
+	}
+	
 	public static Date minOneDay(Date date) throws ParseException{
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date); 
 		cal.add(Calendar.DATE, -1);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date d=sdf.parse(sdf.format(cal.getTime()));
+		return d;
+	}
+	
+	public static Date minDays(Date date, int days) throws ParseException{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date); 
+		cal.add(Calendar.DATE, -days);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date d=sdf.parse(sdf.format(cal.getTime()));
 		return d;

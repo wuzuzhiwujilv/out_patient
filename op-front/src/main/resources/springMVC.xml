@@ -7,14 +7,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
-<!-- 		    <property name="ignoreUnresolvablePlaceholders" value="true" /> -->
-		    <property name="locations">  
-		        <list>  
-		            <value>classpath:path.properties</value>
-		        </list>  
-		    </property>  
-		</bean>
 
 	<mvc:annotation-driven />
 
@@ -42,7 +34,7 @@
 		<!-- <property name="prefix" value="" /> -->
 		<property name="suffix" value=".html" />
 		<property name="viewClass"
-			value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
+			value="com.eye.op.common.handler.FreemarkerViewSettings" />
 		<property name="exposeSpringMacroHelpers" value="true" />
 		<!-- freemarker可以使用请求中的属性 -->
 		<property name="exposeRequestAttributes" value="true" />
@@ -73,11 +65,11 @@
 			</props>
 		</property>
 			<!-- 全局变量部分 -->
-		<property name="freemarkerVariables">
-			<map>
-				<entry key="ctx" value="${basePath}" />
-			</map>
-		</property>
+<!-- 		<property name="freemarkerVariables"> -->
+<!-- 			<map> -->
+<!-- 				<entry key="ctx" value="${basePath}" /> -->
+<!-- 			</map> -->
+<!-- 		</property> -->
 	</bean>
 	
 	<!-- 配置拦截器 -->
@@ -86,13 +78,13 @@
 			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/**/images/**"/>
 			 <mvc:exclude-mapping path="/**/css/**"/>
+			  <mvc:exclude-mapping path="/**/fonts/**"/>
 			  <mvc:exclude-mapping path="/**/js/**"/>
 			  <mvc:exclude-mapping path="/**/*.js"/>
 			   <mvc:exclude-mapping path="/**/*.xls"/>
 			   <mvc:exclude-mapping path="/**/*.xlsx"/>
-			   <mvc:exclude-mapping path="/dologin"/>
-			   <mvc:exclude-mapping path="/anamnesis"/>
 			   <mvc:exclude-mapping path="/randomCode/*"/>
+			    <mvc:exclude-mapping path="/dologin"/>
 			    <mvc:exclude-mapping path="/"/>
 			<bean class="com.eye.op.common.handler.SessionHandlerInterceptor"/>
 		</mvc:interceptor>
