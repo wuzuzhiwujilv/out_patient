@@ -17,6 +17,23 @@
     }, false);
     console.log($("form").serializeArray());
     **/
+    loadQN();
+    function loadQN(){
+    	var idCard = $("#idCard").val();
+    	$.ajax({
+    		url : getRootPath() + "/patient/loadQN",
+    		type : "POST",
+    		data : {
+    			"idCard" : idCard
+    		},
+    		success : function(data) {
+    			if (data.success) {
+    				var qn = data.data;
+    				$("#username").val(qn.name);
+    			} 
+    		}
+    	});
+    }
       
     //配置datetimepicker
     $('.form_date').datetimepicker({

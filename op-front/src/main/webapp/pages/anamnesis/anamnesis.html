@@ -16,24 +16,19 @@
     <div class="container">
       <div class="py-5 text-center">
         <h2>病史确认</h2>
+          <p style="margin-top: 1rem;font-size: 20px;"><a href="${ctx!}/patient/checkList">跳过此步骤</a></p>
       </div>
       <div class="row">
         <div class="col-md-12">
           <form class="needs-validation" id="eye" novalidate>
-
+			<input type="hidden" value=${idCard} id="idCard" name="idCard">
+			<input type="hidden" value=${isNew} id="isNew" name="isNew">
             <div class="row">
               <div class="col-md-3 mb-3">
                 <label for="username">姓名</label>
                 <input type="text" class="form-control" id="username" placeholder="" value="" required>
                 <div class="invalid-feedback">
                   姓名不能为空
-                </div>
-              </div>
-              <div class="col-md-9 mb-3">
-                <label for="IDCard">身份证号</label>
-                <input type="text" class="form-control" id="IDCard" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  身份证号不能为空
                 </div>
               </div>
             </div>
@@ -471,7 +466,7 @@
     <!-- datetimepicker JavaScript -->
     <script type="text/javascript" src="${ctx!}/js/bootstrap/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     <script type="text/javascript" src="${ctx!}/js/bootstrap/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-    
+    <script type="text/javascript" src="${ctx!}/js/myJS/util/utils.js"></script>
     <script type="text/javascript" src="${ctx!}/pages/anamnesis/anamnesis.js"></script>
     
   </body>

@@ -7,6 +7,8 @@
       body {
         background-color: #f1f1f1;
         margin: 0;
+         font-size: 20px;
+          color: #333;
       }
       body,
       input,
@@ -15,7 +17,7 @@
       }
       .container { margin: 100px auto 40px auto; width: 800px; text-align: center; }
 
-      a { color: #4183c4; text-decoration: none; font-weight: bold; }
+      a { color: #4183c4; text-decoration: none; font-weight: bold;}
       a:hover { text-decoration: underline; }
 
       h3 { color: #666; }
@@ -31,9 +33,14 @@
   <div id="search">
   
   <#if hist_flag?? && hist_flag>
-    	<P>患者最近${lastDays}天内有在我院就诊 <a href="${ctx!}/patient/continue">继续未完成的检查 </a></P>
+    	<P>患者最近${lastDays}天内有在我院就诊 </P>
+    	<a href="${ctx!}/patient/goQN?isNew=n&idCard=${idCard}">继续未完成的检查 </a>
+    	<br><br>
+    	<a href="${ctx!}/patient/goQN?isNew=y&idCard=${idCard}">创建新的检查 </a>
+    	<br>
   <#else>
-		<P>患者最近${lastDays}天内没有就诊记录  <a href="${ctx!}/patient/continue">创建新的检查 </a> </P>
+		<P>患者最近${lastDays}天内没有就诊记录   </P>
+		<a href="${ctx!}/patient/goQN?isNew=y&idCard=${idCard}">创建新的检查 </a>
   </#if>
 		
   </div>
