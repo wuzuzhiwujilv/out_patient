@@ -37,7 +37,7 @@ public class User extends GenerateBean{
 		return flag;
 	}
 	@ManyToMany
-	@JoinTable(name="user_privilege",joinColumns =@JoinColumn(name ="uid"),
+	@JoinTable(name="op_user_privilege",joinColumns =@JoinColumn(name ="uid"),
 			inverseJoinColumns = {@JoinColumn(name = "pid")})
 	@OrderBy("id ASC")
 	@JsonManagedReference

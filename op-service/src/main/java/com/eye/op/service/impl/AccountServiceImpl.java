@@ -36,6 +36,8 @@ public class AccountServiceImpl extends ServiceImpl implements IAccountService{
 		List<User> list =get(account);
 		if(!list.isEmpty()){
 			map.put("authName",account.getVcAccount());
+			map.put("privilege", list.get(0).getPrivileges());
+			log.info("用户权限:" + list.get(0).getPrivileges().size());
 			session.setAttribute(Constant.SESSION_ACCOUNT, account.getVcAccount());
 			session.setAttribute(Constant.SESSION_USER, account);
 			return true;

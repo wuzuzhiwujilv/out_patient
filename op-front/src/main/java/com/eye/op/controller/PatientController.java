@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +20,13 @@ import com.eye.op.bean.Questionnaire;
 import com.eye.op.common.param.AjaxResponse;
 import com.eye.op.common.utils.DateUtil;
 import com.eye.op.service.IPatientService;
+import com.eye.op.service.impl.AccountServiceImpl;
 
 
 @Controller
 @RequestMapping("/patient")
 public class PatientController {
+	final static Logger log = Logger.getLogger(PatientController.class);
 	
 	@Value("${last_days_hist}")
 	private int lastDaysHist;
@@ -36,29 +39,19 @@ public class PatientController {
 	public ModelAndView nav(String idCard) throws Exception{
 		Map<String,Object> map=new HashMap<String,Object>(); 
 		Patient patient = patientService.getPatient(idCard);
-		if(patient != null){
-			History history = patient.getHistorys().get(0);
-			Date date = DateUtil.formatToDate(history.getCreatedDate());
-			Date current = new Date();
-			Date last_day = DateUtil.minDays(current, lastDaysHist);;
-			if(DateUtil.isGET(date, last_day)){
-				map.put("hist_flag", true);
-			}
+		if(patient != null && patient.getQuestionnaire() != null){
+			map.put("qn", patient.getQuestionnaire());
 		}
-		map.put("lastDays", lastDaysHist);
 		map.put("idCard", idCard);
-		String path = "front/hist";
+		String path = "anamnesis/anamnesis";
 		return new ModelAndView(path,map);
 		
 	} 
 	
 	@RequestMapping("/goQN")
 	public ModelAndView goQN(String idCard, String isNew){
-		Map<String,Object> map=new HashMap<String,Object>(); 
-		String path = "anamnesis/anamnesis";
-		map.put("isNew", isNew);
-		map.put("idCard", idCard);
-		return new ModelAndView(path,map);
+		String path = "anamnesis/histSearch";
+		return new ModelAndView(path);
 	}
 	
 	@RequestMapping("/loadQN")
@@ -66,10 +59,24 @@ public class PatientController {
 	public AjaxResponse loadQN(String idCard){
 		AjaxResponse response = new AjaxResponse();
 		Patient patient = patientService.getPatient(idCard);
-		Questionnaire qn = patient.getQuestionnaire();
+		Questionnaire qn = patient == null ? null:patient.getQuestionnaire();
 		response.setSuccess(true);
 		response.setData(qn);
 		return response;
 	}
 	
+	@RequestMapping("/saveQN")
+	@ResponseBody
+	public AjaxResponse saveQN(Questionnaire questionnaire){
+		AjaxResponse response = new AjaxResponse();
+		try{
+			patientService.saveQN(questionnaire);
+		}catch(Exception e){
+			log.error(e);
+			response.setSuccess(false);
+			return response;
+		}
+		response.setSuccess(true);
+		return response;
+	}
 }

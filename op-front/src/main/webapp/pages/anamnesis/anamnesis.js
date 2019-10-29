@@ -2,21 +2,22 @@
     'use strict';
 
     // 检测必填信息
-    /**
-    window.addEventListener('load', function() {
-      var forms = document.getElementsByClassName('needs-validation');
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-    console.log($("form").serializeArray());
-    **/
+    
+//    window.addEventListener('load', function() {
+//      var forms = document.getElementsByClassName('needs-validation');
+//      var validation = Array.prototype.filter.call(forms, function(form) {
+//        form.addEventListener('submit', function(event) {
+//          if (form.checkValidity() === false) {
+//            event.preventDefault();
+//            event.stopPropagation();
+//          }
+//          form.classList.add('was-validated');
+//        }, false);
+//      });
+//    }, false);
+ 
+    $("#nameValidate").hide();
+    $("#idValidate").hide();
     loadQN();
     function loadQN(){
     	var idCard = $("#idCard").val();
@@ -29,7 +30,11 @@
     		success : function(data) {
     			if (data.success) {
     				var qn = data.data;
-    				$("#username").val(qn.name);
+    				if(qn != null){
+    					$("#name").val(qn.name);
+        				$("#idCard").val(qn.idCard);
+    				}
+    				
     			} 
     		}
     	});
@@ -101,16 +106,26 @@
 
     var button = document.getElementById("submit"); 
     button.onclick = function(){
-      console.log(getFormData());
       var formData = getFormData();
+      $("#nameValidate").hide();
+      $("#idValidate").hide();
+      if(isEmpty(formData.name)){
+    	  $("#nameValidate").show();
+      }
+      if(isEmpty(formData.idCard)){
+    	  $("#idValidate").show();
+      }
       $.ajax({
-          url : "/xxx/xxxx",
-          async : true,
+    	  url : getRootPath() + "/patient/saveQN",
           type : "POST",
           data : formData,
-          //成功后开启模态框
-          success : showSuccessMsg,
-          //失败后开启模态框
+          success : function(data) {
+  			if (data.success) {
+  				showSuccessMsg();
+			}else{
+				showErrorMsg();
+			} 
+		},
           error : showErrorMsg,
           dataType : "json"
       });
@@ -123,5 +138,8 @@
     function showErrorMsg(){
       $('#errorMsg').modal('show');
     }
-    
+    var okNext = document.getElementById("okNext"); 
+    okNext.onclick = function(){
+    	window.location.href = getRootPath() + '/patient/goQN';
+    }
   })();

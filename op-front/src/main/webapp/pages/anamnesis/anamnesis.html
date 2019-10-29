@@ -10,25 +10,40 @@
     <link href="${ctx!}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="${ctx!}/css/bootstrap/form-validation.css" rel="stylesheet">
     <link href="${ctx!}/css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <style>
+/*     override bootstrap from css */
+    .invalid-feedback {
+		 width:100%;
+		 margin-top:.25rem;
+		 font-size:80%;
+		 color:#dc3545;
+		 display:block; 
+	}
+    </style>
   </head>
 
   <body class="bg-light">
     <div class="container">
       <div class="py-5 text-center">
         <h2>病史确认</h2>
-          <p style="margin-top: 1rem;font-size: 20px;"><a href="${ctx!}/patient/checkList">跳过此步骤</a></p>
       </div>
-      <div class="row">
+       <div class="row">
         <div class="col-md-12">
           <form class="needs-validation" id="eye" novalidate>
-			<input type="hidden" value=${idCard} id="idCard" name="idCard">
-			<input type="hidden" value=${isNew} id="isNew" name="isNew">
+
             <div class="row">
               <div class="col-md-3 mb-3">
-                <label for="username">姓名</label>
-                <input type="text" class="form-control" id="username" placeholder="" value="" required>
-                <div class="invalid-feedback">
+                <label for="name">姓名</label>
+                <input type="text" class="form-control" id="name" placeholder="" value="" required>
+                <div class="invalid-feedback" id="nameValidate">
                   姓名不能为空
+                </div>
+              </div>
+              <div class="col-md-9 mb-3">
+                <label for="idCard">身份证号</label>
+                <input type="text" class="form-control" id="idCard" placeholder="" value="${idCard!}" required>
+                <div class="invalid-feedback" id="idValidate">
+                  身份证号不能为空
                 </div>
               </div>
             </div>
@@ -36,17 +51,17 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="stature">身高</label>
-                <input type="text" class="form-control" id="stature" placeholder="cm" value="" required>
-                <div class="invalid-feedback">
-                  身高不能为空
-                </div>
+                <input type="text" class="form-control" id="stature" placeholder="cm" value="" >
+<!--                 <div class="invalid-feedback"> -->
+<!--                   身高不能为空 -->
+<!--                 </div> -->
               </div>
               <div class="col-md-6 mb-3">
                 <label for="weight">体重</label>
-                <input type="text" class="form-control" id="weight" placeholder="kg" value="" required>
-                <div class="invalid-feedback">
-                  体重不能为空
-                </div>
+                <input type="text" class="form-control" id="weight" placeholder="kg" value="" >
+<!--                 <div class="invalid-feedback"> -->
+<!--                   体重不能为空 -->
+<!--                 </div> -->
               </div>
             </div>
 
@@ -141,9 +156,9 @@
             <div class="row">
                 <div class="col-md-12 mb-3">
                   <input type="text" class="form-control" id="childBearingAge" placeholder="" value="" required>
-                  <div class="invalid-feedback">
-                    生育年龄不能为空
-                  </div>
+<!--                   <div class="invalid-feedback"> -->
+<!--                     生育年龄不能为空 -->
+<!--                   </div> -->
                 </div>
             </div>
 
@@ -432,10 +447,12 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">系统提示：</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
               <div class="modal-body">
-                提交成功！
+               	 提交成功！
+              </div>
+              <div class="modal-footer">
+                 <button class="btn btn-primary btn-lg btn-block" type="button" id="okNext">确定</button> 
               </div>
             </div>
           </div>
@@ -467,6 +484,7 @@
     <script type="text/javascript" src="${ctx!}/js/bootstrap/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     <script type="text/javascript" src="${ctx!}/js/bootstrap/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
     <script type="text/javascript" src="${ctx!}/js/myJS/util/utils.js"></script>
+    <script type="text/javascript" src="${ctx!}/js/myJS/util/common.js"></script>
     <script type="text/javascript" src="${ctx!}/pages/anamnesis/anamnesis.js"></script>
     
   </body>
