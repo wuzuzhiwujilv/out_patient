@@ -79,7 +79,7 @@
 		<mysql.version>5.1.6</mysql.version>
 		<log.version>1.2.15</log.version>
 		<commons.lang.verson>3.3.2</commons.lang.verson>
-		<poi.version>3.12</poi.version>
+		<poi.version>4.1.1</poi.version>
 		<poi.ooxml.version>3.12</poi.ooxml.version>
 		<dom4j.version>1.6</dom4j.version>
 		<hibernate-c3p0>4.3.5.Final</hibernate-c3p0>
