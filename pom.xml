@@ -75,7 +75,7 @@
 		<hibernate.jpa.version>1.0.0.Final</hibernate.jpa.version>
 		<hibernate.core.version>4.3.5.Final</hibernate.core.version>
 		<hibernate.ehcache.version>4.3.5.final</hibernate.ehcache.version>
-		<hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
+		<hibernate.validator.version>4.3.2.Final</hibernate.validator.version>
 		<mysql.version>5.1.6</mysql.version>
 		<log.version>1.2.15</log.version>
 		<commons.lang.verson>3.3.2</commons.lang.verson>
