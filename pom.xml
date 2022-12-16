@@ -65,7 +65,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.jdk>1.8</project.build.jdk>
-		<spring.version>4.3.11.RELEASE</spring.version>
+		<spring.version>5.2.20.RELEASE</spring.version>
 		<spring.data.jpa.version>1.10.6.RELEASE</spring.data.jpa.version>
 		<junit.version>4.11</junit.version>
 		<commonslang3.verison>3.6</commonslang3.verison>
